@@ -1,0 +1,29 @@
+[
+  {
+    "name": "${name}",
+    "image": "${image}",
+    "cpu": ${cpu},
+    "memory": ${memory},
+    "portMappings": [
+      {
+        "containerPort": ${port},
+        "hostPort": ${port}
+      }
+    ],
+    "networkMode": "awsvpc",
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group}",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "${name}"
+      }
+    },
+    "environment": [
+      {
+        "name": "REACT_APP_BACKEND_URL",
+        "value": "http://${loadbalancer_dns}"
+      }
+    ]
+  }
+]

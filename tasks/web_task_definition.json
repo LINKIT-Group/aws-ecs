@@ -1,0 +1,41 @@
+[
+  {
+    "name": "${name}",
+    "image": "${image}",
+    "cpu": ${cpu},
+    "memory": ${memory},
+    "portMappings": [
+      {
+        "containerPort": ${port},
+        "hostPort": ${port}
+      }
+    ],
+    "networkMode": "awsvpc",
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group}",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "${name}"
+      }
+    },
+    "environment": [
+      {
+        "name": "AWS_REGION",
+        "value": "${region}"
+      },
+      {
+        "name": "ENDPOINT",
+        "value": "http://dynamodb.${region}.amazonaws.com"
+      },
+      {
+        "name": "HASHSALT",
+        "value": "!23#4^2!@"
+      },
+      {
+        "name": "NODE_ENV",
+        "value": "${environment}"
+      }
+    ]
+  }
+]
