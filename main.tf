@@ -281,7 +281,7 @@ resource "aws_ecs_service" "web" {
     container_port   = "${var.container_port}"
   }
 
-  depends_on = ["aws_alb_target_group.alb_target_group","aws_alb.alb_ecs"]
+  #depends_on = ["aws_alb_target_group.alb_target_group","aws_alb.alb_ecs"]
 }
 
 resource "aws_ecs_service" "web_no_alb" {
